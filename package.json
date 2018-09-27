@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "date-fns": "^1.29.0"
+    "chart.js": "^2.7.2",
+    "date-fns": "^1.29.0",
+    "gsap": "^2.0.2"
   }
 }
