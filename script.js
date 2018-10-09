@@ -6,8 +6,7 @@ function update(data) {
     data = JSON.parse(FooBar.getData());
     const taps = data.taps;
     taps.forEach(drawGauge);
-  }, 1000);
-  console.log(data);
+  }, 10000);
   //This creates a parameterless anonymous function which calls drawGraph() with arguments
 }
 function drawGauge(data) {
@@ -16,7 +15,6 @@ function drawGauge(data) {
     ["Label", "Value"],
     ["Level %", porcentageLevel]
   ]);
-
   let options = {
     width: 400,
     height: 120,
@@ -32,6 +30,12 @@ function drawGauge(data) {
     document.getElementById("chart_div" + data.id)
   );
   chart.draw(aGaugeData, options);
+  let aGuage = document.getElementById("chart_div" + data.id);
+  let gaugeName = document.createTextNode(data.beer);
+  let gaugeStatus = document.createTextNode(" / " + data.inUse);
+  aGuage.appendChild(gaugeName);
+  aGuage.appendChild(gaugeStatus);
+  console.log(data);
 }
 function init() {
   let data = JSON.parse(FooBar.getData());
