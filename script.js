@@ -1,6 +1,6 @@
 google.charts.load("current", { packages: ["gauge"] });
 google.charts.setOnLoadCallback(init);
-let refreshFrecuency = 100000;
+let refreshFrecuency = 1000;
 
 function update(data) {
   setInterval(function() {
@@ -42,9 +42,11 @@ function drawGauge(data) {
   aGuage.appendChild(gaugeStatus);
 }
 function drawQueue(data) {
-  let queueGraphWidth = data.queue.length * 19 + "px";
-  console.log(queueGraphWidth);
+  let queueGraphWidth = data.queue.length * 24 + "px";
+  console.log(data.queue.length);
   document.getElementById("queueGraph").setAttribute("width", queueGraphWidth);
+  document.querySelector(".queueLength").textContent =
+    "Customers waiting to be served " + data.queue.length;
 }
 function init() {
   let data = JSON.parse(FooBar.getData());
