@@ -1,12 +1,17 @@
 google.charts.load("current", { packages: ["gauge"] });
 google.charts.setOnLoadCallback(init);
+let refreshFrecuency = 100000;
 
 function update(data) {
   setInterval(function() {
     data = JSON.parse(FooBar.getData());
     const taps = data.taps;
     taps.forEach(drawGauge);
-  }, 10000);
+  }, refreshFrecuency);
+  setInterval(function() {
+    drawQueue(data);
+  }, refreshFrecuency);
+
   //This creates a parameterless anonymous function which calls drawGraph() with arguments
 }
 function drawGauge(data) {
@@ -35,11 +40,16 @@ function drawGauge(data) {
   let gaugeStatus = document.createTextNode(" / " + data.inUse);
   aGuage.appendChild(gaugeName);
   aGuage.appendChild(gaugeStatus);
-  console.log(data);
+}
+function drawQueue(data) {
+  let queueGraphWidth = data.queue.length * 19 + "px";
+  console.log(queueGraphWidth);
+  document.getElementById("queueGraph").setAttribute("width", queueGraphWidth);
 }
 function init() {
   let data = JSON.parse(FooBar.getData());
   const taps = data.taps;
   taps.forEach(drawGauge);
   update(data);
+  drawQueue(data);
 }
