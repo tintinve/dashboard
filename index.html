@@ -24,12 +24,30 @@
         <div id="chart_div6"></div>
     </div>
     <div>
-        <h3>Queue</h3>
         <h3 class="queueLength"></h3>
         <svg id="queueGraph" width="0" height="110">
             <rect width="300" height="50" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
         </svg>
     </div>
+    <div class="bartenderDisplay">
+        <div class="aBartenderData">
+            <h3>Peter</h3>
+            <p class="peterStatus"></p>
+            <p class="peterUsingTap"></p>
+        </div>
+        <div class="aBartenderData">
+            <h3>Jonas</h3>
+            <p class="jonasStatus"></p>
+            <p class="jonasUsingTap"></p>
+
+        </div>
+        <div class="aBartenderData">
+            <h3>Martin</h3>
+            <p class="martinStatus"></p>
+            <p class="martinUsingTap"></p>
+        </div>
+    </div>
+    <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
     <script src="script.js"></script>
 </body>
 
