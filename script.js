@@ -15,7 +15,7 @@ function update(data) {
   }, refreshFrecuency);
   setInterval(function() {
     drawStorage(data);
-  }, refreshFrecuency * 10);
+  }, refreshFrecuency * 100);
 
   //This creates a parameterless anonymous function which calls drawGraph() with arguments
 }
@@ -87,12 +87,12 @@ function drawStorage(data) {
   let beerType = data.storage;
   console.log(beerType[0].name);
   var data = google.visualization.arrayToDataTable([
-    ["ØL", "STOCK"],
+    ["Øl kegs in stock", "STOCK"],
     [beerType[0].name, beerType[0].amount],
     [beerType[1].name, beerType[1].amount],
     [beerType[2].name, beerType[2].amount],
     [beerType[3].name, beerType[3].amount],
-    [beerType[4].name, beerType[4].amount],
+    ["HEA", beerType[4].amount],
     [beerType[5].name, beerType[5].amount],
     [beerType[6].name, beerType[6].amount],
     [beerType[7].name, beerType[7].amount],
@@ -102,7 +102,12 @@ function drawStorage(data) {
 
   var options = {
     legend: { position: "none" },
-    animation: { startup: false }
+    animation: { startup: false },
+    hAxis: {
+      textStyle: {
+        fontSize: 8
+      }
+    }
   };
 
   var chart = new google.charts.Bar(
