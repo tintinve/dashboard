@@ -1,5 +1,142 @@
-.gauge div {
-  width: 180px;
+body {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  grid-auto-rows: 150px;
+  font-family: "Contrail One", sans-serif;
+  color: #000000;
+  background-color: #000000;
+}
+
+div {
+  text-align: center;
+}
+
+h3,
+p {
+  padding-right: 10px;
+}
+
+.logo {
+  grid-column: 1/3;
+  height: auto;
+  background-repeat: repeat;
+  color: white;
+}
+
+.foo {
   height: 120px;
+  padding: 20px;
+  float: left;
+  /*Test Damir*/
+}
+
+.shapes {
+  height: 120px;
+  padding: 20px;
+  float: right;
+}
+
+.gauge div {
+  max-width: 180px;
+  max-height: 120px;
   display: inline-block;
+  text-align: center;
+  margin: auto;
+}
+
+.gauge {
+  display: inline-block;
+  margin: auto;
+  grid-column: 1/3;
+  grid-row: 2/3;
+  background-color: #f8ff40;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.iconGauge {
+  float: left;
+  padding-left: 20px;
+}
+
+#chart_div1,
+#chart_div2,
+#chart_div3,
+#chart_div4,
+#chart_div5,
+#chart_div6,
+#chart_div7 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.bartenderDisplay {
+  grid-row: 4/5;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.aBartenderData {
+  text-align: center;
+  background-color: #ff76b5;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: auto;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.iconBartender {
+  float: left;
+  padding-left: 20px;
+}
+
+.bartenderInfo {
+  position: relative;
+  margin: auto;
+}
+
+.queue {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #b1ff59;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.iconQueue {
+  float: left;
+  padding-left: 20px;
+}
+
+.storageDiv {
+  display: grid;
+  grid-column: 2/3;
+  grid-row: 3/4;
+  height: 310px;
+  width: 710px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.iconStorage {
+  padding-left: 20px;
+}
+
+#columnchart_material {
+  background-color: #ffffff;
+  border-radius: 10px;
+  width: 100%;
+  padding-bottom: 10px;
 }
