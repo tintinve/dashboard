@@ -16,6 +16,7 @@ body {
   margin-right: auto;
   width: 400px;
   color: #ffffff;
+  font-family: "Contrail One", sans-serif;
 }
 .gauge {
   display: none;
@@ -148,7 +149,9 @@ body {
     display: grid;
     grid-template-columns: 1fr 3fr;
   }
-
+  #queueGraph {
+    transition: width 0.4s;
+  }
   .iconQueue {
     float: left;
     padding-left: 20px;

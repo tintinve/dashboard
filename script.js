@@ -1,3 +1,15 @@
+TweenMax.from(".shapes", 2, { x: 300 });
+const all = document.querySelectorAll(".shapes g");
+const tl = new TimelineMax({ repeat: 0, repeatDelay: 1 });
+tl.staggerFrom(
+  all,
+  3,
+  {
+    x: () => Math.random() * 1000 - 500,
+    y: () => Math.random() * 1000 - 500
+  },
+  0.1
+);
 google.charts.load("current", { packages: ["gauge", "bar"] });
 google.charts.setOnLoadCallback(init);
 let refreshFrecuency = 1000;
@@ -87,7 +99,7 @@ function drawStorage(data) {
   let beerType = data.storage;
   console.log(beerType[0].name);
   var data = google.visualization.arrayToDataTable([
-    ["Øl kegs in stock", "STOCK"],
+    ["Beer kegs in stock", "STOCK"],
     [beerType[0].name, beerType[0].amount],
     [beerType[1].name, beerType[1].amount],
     [beerType[2].name, beerType[2].amount],
@@ -106,6 +118,9 @@ function drawStorage(data) {
     hAxis: {
       textStyle: {
         fontSize: 8
+      },
+      titleTextStyle: {
+        fontSize: 16
       }
     }
   };
