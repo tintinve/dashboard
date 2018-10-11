@@ -125,7 +125,7 @@ p {
   grid-column: 2/3;
   grid-row: 3/4;
   height: 310px;
-  width: 710px;
+  width: 100%;
   background-color: #ffffff;
   border-radius: 10px;
 }

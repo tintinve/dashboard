@@ -15,7 +15,7 @@ function update(data) {
   }, refreshFrecuency);
   setInterval(function() {
     drawStorage(data);
-  }, refreshFrecuency);
+  }, refreshFrecuency * 10);
 
   //This creates a parameterless anonymous function which calls drawGraph() with arguments
 }
@@ -42,9 +42,9 @@ function drawGauge(data) {
   chart.draw(aGaugeData, options);
   let aGuage = document.getElementById("chart_div" + data.id);
   let gaugeName = document.createTextNode(data.beer);
-  let gaugeStatus = document.createTextNode(" / " + data.inUse);
+  //let gaugeStatus = document.createTextNode(" / " + data.inUse);
   aGuage.appendChild(gaugeName);
-  aGuage.appendChild(gaugeStatus);
+  //aGuage.appendChild(gaugeStatus);
 }
 function drawQueue(data) {
   let queueGraphWidth = data.queue.length * 24 + "px";
@@ -53,18 +53,34 @@ function drawQueue(data) {
     "Customers waiting to be served " + data.queue.length;
 }
 function bartenders(data) {
+  let peterTab = data.bartenders[0].usingTap + 1;
+  let jonasTab = data.bartenders[1].usingTap + 1;
+  let martinTab = data.bartenders[2].usingTap + 1;
+  document.querySelector(".peterUsingTap").style.opacity = "0";
+  document.querySelector(".jonasUsingTap").style.opacity = "0";
+  document.querySelector(".martinUsingTap").style.opacity = "0";
+  if (data.bartenders[0].status === "WORKING") {
+    document.querySelector(".peterUsingTap").style.opacity = "1";
+  }
+  if (data.bartenders[1].status === "WORKING") {
+    document.querySelector(".jonasUsingTap").style.opacity = "1";
+  }
+  if (data.bartenders[2].status === "WORKING") {
+    document.querySelector(".martinUsingTap").style.opacity = "1";
+  }
+  console.log(data.bartenders[0].status);
   document.querySelector(".peterStatus").textContent =
     data.bartenders[0].status;
   document.querySelector(".peterUsingTap").textContent =
-    "using tap " + data.bartenders[0].usingTap;
+    "using tap " + peterTab;
   document.querySelector(".jonasStatus").textContent =
     data.bartenders[1].status;
   document.querySelector(".jonasUsingTap").textContent =
-    "using tap " + data.bartenders[1].usingTap;
+    "using tap " + jonasTab;
   document.querySelector(".martinStatus").textContent =
     data.bartenders[2].status;
   document.querySelector(".martinUsingTap").textContent =
-    "using tap " + data.bartenders[2].usingTap;
+    "using tap " + martinTab;
 }
 function drawStorage(data) {
   console.log(data.storage);
@@ -85,7 +101,8 @@ function drawStorage(data) {
   ]);
 
   var options = {
-    legend: { position: "none" }
+    legend: { position: "none" },
+    animation: { startup: false }
   };
 
   var chart = new google.charts.Bar(
